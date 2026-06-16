@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/gallery_home.dart';
 import 'widget/profile_helpers.dart';
+import 'quiz_pertemuan3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfilePage(),
+      home: QuizProfilePage(),
     );
   }
 }
@@ -107,9 +108,14 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   children: [
                     // TUGAS MANDIRI 1: Menggunakan NetworkImage dari Avatar GitHub Anda
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage('https://github.com/hanhelmawan.png'),
+                      backgroundColor: Colors.blue.shade100,
+                      backgroundImage: const NetworkImage('https://avatars.githubusercontent.com/u/108425234?v=4'),
+                      onBackgroundImageError: (exception, stackTrace) {
+                        debugPrint('Error loading profile image: $exception');
+                      },
+                      child: const Icon(Icons.person, size: 50, color: Colors.blue),
                     ),
                     const SizedBox(height: 12),
                     const Text(
